@@ -1,0 +1,4 @@
+environment: perf
+namespace: perf
+cluster: in-cluster
+path: mbe/mainchart/perf

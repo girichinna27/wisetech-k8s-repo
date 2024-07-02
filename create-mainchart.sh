@@ -22,6 +22,7 @@ if ! command -v yq &> /dev/null; then
   exit 1
 fi
 
+rm -rf $folder/mainchart
 mkdir -p $folder/mainchart
 TAG=mybranch-1275
 REPOSITORY=docker.io/gopalvithaljayanthi/nginx

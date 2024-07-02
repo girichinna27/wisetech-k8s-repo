@@ -1,0 +1,4 @@
+environment: qa
+namespace: qa
+cluster: in-cluster
+path: mbe/mainchart/qa

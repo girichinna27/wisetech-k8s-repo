@@ -1,0 +1,4 @@
+environment: prod
+namespace: prod
+cluster: in-cluster
+path: mbe/mainchart/prod
