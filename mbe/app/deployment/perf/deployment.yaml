@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: analytics-ui
+  namespace: dev
+  annotations:
+    meta.helm.sh/release-name: analyticsui
+    meta.helm.sh/release-namespace: default
+spec:
+  replicas: 1
+  strategy:
+        type: Recreate
+  selector:
+    matchLabels:
+      run: analytics-ui
+  template:
+    metadata:
+      labels:
+        run: analytics-ui
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+      - name: analytics-ui
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: Always
+        env:
+            - name: PORT_NO
+              value: "8272"
+            - name: ENV
+              value: "Dev"      
