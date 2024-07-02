@@ -37,7 +37,7 @@ for env in "${environments[@]}"; do
  rm -rf "$env"/templates/*  
 sed -e "s/PLACEHOLDER/${folder}-${env}/g" ../../Chart.tmpl >  "$env"/Chart.yaml
 echo > "$env"/values.yaml
-yq e ".revision = mybranch" -i "$env"/values.yaml
+yq e '.revision = "mybranch"'  -i "$env"/values.yaml
 
 for dir in $(find ../.. -type d -name "chart"); do
   echo "Processing directory: $dir"
