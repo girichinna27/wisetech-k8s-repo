@@ -5,10 +5,10 @@ metadata:
   labels:
     name: external
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-    - nodePort: 31780
-      port: 8272
+    - port: 8272
+      targetPort: 80
       protocol: TCP
   selector:
     name: external
