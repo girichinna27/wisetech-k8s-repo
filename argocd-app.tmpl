@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: PLACEHOLDER-{{ .Values.environment }}
+  namespace: argocd
+spec:
+  destination:
+    namespace: {{ .Values.namespace }}
+    server: https://kubernetes.default.svc
+  project: {{ .Values.environment }}-project
+  source:
+    path: {{ .Values.path }}
+    repoURL: {{ .Values.gitrepo }}
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true

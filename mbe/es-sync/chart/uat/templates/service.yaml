@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: analytics-ui
+  namespace: dev
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    run: analytics-ui
+  annotations:
+    meta.helm.sh/release-name: analyticsui
+    meta.helm.sh/release-namespace: default
+spec:
+  type: NodePort
+  ports:
+    - nodePort: 31780
+      port: 8272
+      protocol: TCP
+  selector:
+    run: analytics-ui
