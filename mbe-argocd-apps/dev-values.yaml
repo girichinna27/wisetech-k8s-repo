@@ -1,4 +1,4 @@
 environment: dev
 namespace: dev
-cluster: in-cluster
+cluster: dev-cluster
 path: mbe/mainchart/dev

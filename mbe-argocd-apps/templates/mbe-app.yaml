@@ -6,12 +6,15 @@ metadata:
 spec:
   destination:
     namespace: {{ .Values.namespace }}
-    server: {{ .Values.cluster }}
+    name: {{ .Values.cluster }}
   project: {{ .Values.environment }}-project
   source:
     path: {{ .Values.path }}
     repoURL: {{ .Values.gitrepo }}
     targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values.yaml
   syncPolicy:
     automated: {}
     syncOptions:

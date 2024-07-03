@@ -13,7 +13,7 @@ if [ ! -d "$folder" ]; then
   echo "Error: $folder is not a valid directory"
   exit 1
 fi
-
+rm -rf helm create "$folder"-argocd-apps
 helm create "$folder"-argocd-apps
 rm -rf "$folder"-argocd-apps/templates/*
 sed -e "s/PLACEHOLDER/${folder}/g" ./Chart.tmpl >  "$folder"-argocd-apps/Chart.yaml
@@ -27,6 +27,6 @@ for env in "${environments[@]}"; do
     echo "Processing environment: $env"
 echo "environment: $env" > "$folder"-argocd-apps/"$env"-values.yaml
 echo "namespace: $env" >> "$folder"-argocd-apps/"$env"-values.yaml
-echo "cluster: in-cluster" >> "$folder"-argocd-apps/"$env"-values.yaml
+echo "cluster: $env-cluster" >> "$folder"-argocd-apps/"$env"-values.yaml
 echo "path: $folder/mainchart/$env" >> "$folder"-argocd-apps/"$env"-values.yaml
 done

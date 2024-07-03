@@ -1,7 +1,7 @@
 image:
   #change repository
-  repository: us.gcr.io/blume-shared-container-images/analytics-ui
-  tag: donotchange
+  repository: docker.io/gopalvithaljayanthi/nginx
+  tag: mybranch-1275
 
 service:
   type: NodePort

@@ -1,4 +1,4 @@
 environment: uat
 namespace: uat
-cluster: in-cluster
+cluster: uat-prod-cluster
 path: mbe/mainchart/uat

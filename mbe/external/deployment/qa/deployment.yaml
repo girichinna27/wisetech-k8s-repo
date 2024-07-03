@@ -1,33 +1,56 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app.kubernetes.io/managed-by: Helm
-  name: analytics-ui
-  namespace: dev
-  annotations:
-    meta.helm.sh/release-name: analyticsui
-    meta.helm.sh/release-namespace: default
+  name: external
 spec:
   replicas: 1
-  strategy:
-        type: Recreate
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
-      run: analytics-ui
+      name: external
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
+      creationTimestamp: null
       labels:
-        run: analytics-ui
+        name: external
     spec:
-      hostNetwork: true
-      dnsPolicy: ClusterFirstWithHostNet
       containers:
-      - name: analytics-ui
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: Always
-        env:
-            - name: PORT_NO
-              value: "8272"
-            - name: ENV
-              value: "Dev"      
+      - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: http
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: external
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: http
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources: {}
+        securityContext: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
