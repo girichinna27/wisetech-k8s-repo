@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mbe-dev
+  name: dev-mbe
   namespace: argocd
 spec:
   destination:

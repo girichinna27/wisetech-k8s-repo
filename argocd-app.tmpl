@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: PLACEHOLDER-{{ .Values.environment }}
+  name: {{ .Values.environment }}-PLACEHOLDER
   namespace: argocd
 spec:
   destination:

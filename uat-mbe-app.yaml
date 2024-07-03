@@ -3,15 +3,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: qa-mbe
+  name: uat-mbe
   namespace: argocd
 spec:
   destination:
-    namespace: qa
-    name: qa-perf-cluster
-  project: qa-project
+    namespace: uat
+    name: uat-prod-cluster
+  project: uat-project
   source:
-    path: mbe/mainchart/qa
+    path: mbe/mainchart/uat
     repoURL: https://github.com/gopaljayanthi/wisetech-k8s-repo
     targetRevision: HEAD
     helm:

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mbe-{{ .Values.environment }}
+  name: {{ .Values.environment }}-mbe
   namespace: argocd
 spec:
   destination:

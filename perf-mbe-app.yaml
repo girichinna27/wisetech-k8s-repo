@@ -3,15 +3,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: qa-mbe
+  name: perf-mbe
   namespace: argocd
 spec:
   destination:
-    namespace: qa
+    namespace: perf
     name: qa-perf-cluster
-  project: qa-project
+  project: perf-project
   source:
-    path: mbe/mainchart/qa
+    path: mbe/mainchart/perf
     repoURL: https://github.com/gopaljayanthi/wisetech-k8s-repo
     targetRevision: HEAD
     helm:
