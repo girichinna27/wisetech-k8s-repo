@@ -1,4 +1,0 @@
-environment: perf
-namespace: perf
-cluster: qa-perf-cluster
-path: mbe/mainchart/perf

@@ -1,4 +1,0 @@
-environment: prod
-namespace: prod
-cluster: uat-prod-cluster
-path: mbe/mainchart/prod

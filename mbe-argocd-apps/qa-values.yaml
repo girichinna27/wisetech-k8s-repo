@@ -1,4 +1,0 @@
-environment: qa
-namespace: qa
-cluster: qa-perf-cluster
-path: mbe/mainchart/qa

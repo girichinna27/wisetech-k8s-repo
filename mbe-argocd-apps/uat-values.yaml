@@ -1,4 +1,0 @@
-environment: uat
-namespace: uat
-cluster: uat-prod-cluster
-path: mbe/mainchart/uat

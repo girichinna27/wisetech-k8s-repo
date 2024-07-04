@@ -1,4 +1,0 @@
-environment: dev
-namespace: dev
-cluster: in-cluster
-path: mbe/mainchart/dev
